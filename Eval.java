@@ -54,7 +54,7 @@ public class Eval {
         }
 
         throw new RuntimeException(
-                "No evaluation rule applies");
+                "no evaluation rule");
     }
 
     public Term eval(
