@@ -22,23 +22,29 @@ public class Main {
         return ctx;
     }
     static void run(String name, Runnable r) {
-        System.out.print("  " + name + " ... ");
-        try {
-            r.run();
-            System.out.println("PASS");
-            passed++;
-        } catch (AssertionError e) {
-            System.out.println("FAIL — " + e.getMessage());
-            failed++;
-        } catch (Exception e) {
-            System.out.println("ERROR — " + e.getMessage());
-            failed++;
-        }
+    System.out.print("  " + name + " ... ");
+    try {
+        r.run();
+        System.out.println("PASS");
+        passed++;
+    } catch (AssertionError e) {
+        System.out.println("FAIL — " + e.getMessage());
+        failed++;
+    } catch (Exception e) {
+        System.out.println("ERROR — " + e.getMessage());
+        failed++;
+    }
     }
     static void assertEqual(String expected, String actual) {
-        if (!expected.equals(actual))
-            throw new AssertionError("expected «" + expected + "» got «" + actual + "»");
+    System.out.println();
+    System.out.println("    expected: " + expected);
+    System.out.println("    result:   " + actual);
+
+    if (!expected.equals(actual)) {
+        throw new AssertionError("values differ");
     }
+    }
+    
     static void assertThrows(Runnable r) {
         try {
             r.run();
